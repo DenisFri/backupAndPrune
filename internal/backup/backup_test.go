@@ -12,7 +12,7 @@ import (
 // TestRunBackup tests the RunBackup function
 func TestRunBackup(t *testing.T) {
 	// Create temporary directories for logs and backups
-	logDir, err := ioutil.TempDir("", "logdir")
+	logDir, err := os.MkdirTemp("", "logdir")
 	if err != nil {
 		t.Fatalf("Failed to create temp log directory: %v", err)
 	}
@@ -26,7 +26,7 @@ func TestRunBackup(t *testing.T) {
 
 	// Create a test log file that should be backed up and pruned
 	oldFilePath := filepath.Join(logDir, "old.log")
-	if err := ioutil.WriteFile(oldFilePath, []byte("old log data"), 0644); err != nil {
+	if err := os.WriteFile(oldFilePath, []byte("old log data"), 0644); err != nil {
 		t.Fatalf("Failed to create old log file: %v", err)
 	}
 	// Modify the file's modification time to be older than the prune threshold

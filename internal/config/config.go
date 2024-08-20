@@ -6,12 +6,12 @@ import (
 )
 
 type Config struct {
-	PruneAfterHours int    `json:"prune_after_hours"`
-	TargetFolder    string `json:"target_folder"`
-	RunInterval     int    `json:"run_interval"`
-	BackupPath      string `json:"backup_path"`
-	RemoteBackup    string `json:"remote_backup"`
-	EnableBackup    bool   `json:"enable_backup"`
+	PruneAfterHours float32 `json:"prune_after_hours"`
+	TargetFolder    string  `json:"target_folder"`
+	RunInterval     int     `json:"run_interval"`
+	BackupPath      string  `json:"backup_path"`
+	RemoteBackup    string  `json:"remote_backup"`
+	EnableBackup    bool    `json:"enable_backup"`
 }
 
 func LoadConfig(filePath string) (*Config, error) {
