@@ -1,10 +1,26 @@
 package main
 
 import (
+	"backupAndPrune/internal/backup"
+	"backupAndPrune/internal/config"
 	"fmt"
+	"time"
 )
 
 func main() {
-	fmt.Printf("Hello and welcome")
+	// Load configuration
+	cfg, err := config.LoadConfig("config.json")
+	if err != nil {
+		fmt.Printf("Error loading config: %v\n", err)
+		return
+	}
 
+	// Run the service
+	for {
+		err := backup.RunBackup(cfg)
+		if err != nil {
+			fmt.Printf("Error running backup: %v\n", err)
+		}
+		time.Sleep(time.Duration(cfg.RunInterval) * time.Second)
+	}
 }

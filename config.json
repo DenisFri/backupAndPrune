@@ -1,7 +1,8 @@
 {
+  "prune_after_hours": 8,
   "target_folder": "/path/to/backup/directory",
-  "run_interval": "86400",
+  "run_interval": 86400,
   "backup_path": "/path/to/backup/directory",
-  "remote_backup_path": "user@remote_host:/remote/backup/directory",
+  "remote_backup": "user@remote:/remote/backup",
   "enable_backup": true
 }
